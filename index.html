@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Number Generator</title>
+</head>
+<body>
+    <h1>RANDOM NUMBER GENERATOR</h1>
+    <button onclick="generate()">Click here to generate!</button>
+    <p id="firstline"></h1>
+    <p id="breakdown"></h1>
+    <p id="date"></p>
+    <script>
+        function generate() {
+
+            
+            var num = Math.floor(Math.random()*1001);
+            document.getElementById("firstline").innerText = "Randomly generated number: ";
+
+            var thousands0 = Math.floor(num/1000);
+            var thousands = thousands0 * 1000;
+            var hundreds0 = Math.floor(num/100);
+            var hundreds = hundreds0 * 100;
+            var tens0 = Math.floor((num - hundreds)/10);
+            var tens = tens0 * 10;
+            var ones = Math.floor(num - hundreds - tens);
+
+            document.getElementById("firstline").innerText = "Randomly generated number: " + num;
+            if (num === 1000) {
+               document.getElementById("breakdown").innerText = "Breakdown: " + thousands + ", " + hundreds + ", " + tens + ", " + ones;
+            } else if (num < 1000 && num >= 100) {
+                document.getElementById("breakdown").innerText = "Breakdown: " + hundreds + ", " + tens + ", " + ones;
+            } else if (num < 100 && num >= 10) {
+                document.getElementById("breakdown").innerText = "Breakdown: " + tens + ", " + ones;
+            } else if (num < 10 && num >= 0) {
+                document.getElementById("breakdown").innerText = "Breakdown: " + ones;
+            }
+            var generatedon = "Generated on ";
+            var date = new Date();
+            var formattedDate = date.toLocaleString('en', { timeZoneName: 'short' });
+            var datesentence = generatedon.concat(innerHTML=formattedDate, ".");
+            document.getElementById("date").innerHTML=datesentence;
+        }
+    </script>
+</body>
+</html>
